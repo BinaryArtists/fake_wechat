@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FakeWechat wechat = new FakeWechat();
-    wechat.registerApp(appId: 'xxxx');// 更换为目标应用的appId
+    wechat.registerApp(appId: 'wx854345270316ce6e');// 更换为目标应用的appId
     return new FakeWechatProvider(
         wechat: wechat,
         child: new MaterialApp(
