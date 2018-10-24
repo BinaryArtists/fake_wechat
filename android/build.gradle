@@ -32,3 +32,7 @@ android {
         disable 'InvalidPackage'
     }
 }
+
+dependencies {
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.1.4'
+}
