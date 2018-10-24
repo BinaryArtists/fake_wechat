@@ -17,14 +17,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FakeWechat wechat = new FakeWechat();
-    wechat.registerApp(appId: 'wx854345270316ce6e');// 更换为目标应用的appId
+    wechat.registerApp(appId: 'wx854345270316ce6e'); // 更换为目标应用的appId
     return new FakeWechatProvider(
-        wechat: wechat,
-        child: new MaterialApp(
-          home: new Home(
-            wechat: wechat,
-          ),
-        ));
+      wechat: wechat,
+      child: new MaterialApp(
+        home: new Home(
+          wechat: wechat,
+        ),
+      ),
+    );
   }
 }
 
@@ -112,11 +113,12 @@ class _HomeState extends State<Home> {
             title: new Text('图片分享'),
             onTap: () async {
               AssetImage image = new AssetImage('images/icon/timg.jpeg');
-              AssetBundleImageKey key = await image.obtainKey(createLocalImageConfiguration(context));
+              AssetBundleImageKey key =
+                  await image.obtainKey(createLocalImageConfiguration(context));
               ByteData imageData = await key.bundle.load(key.name);
               widget.wechat.shareImage(
-                  scene: FakeWechatScene.TIMELINE,
-                  imageData: imageData.buffer.asUint8List()
+                scene: FakeWechatScene.TIMELINE,
+                imageData: imageData.buffer.asUint8List(),
               );
             },
           ),
@@ -124,8 +126,8 @@ class _HomeState extends State<Home> {
             title: new Text('网页分享'),
             onTap: () {
               widget.wechat.shareWebpage(
-                  scene: FakeWechatScene.TIMELINE,
-                  webpageUrl: 'https://www.baidu.com'
+                scene: FakeWechatScene.TIMELINE,
+                webpageUrl: 'https://www.baidu.com',
               );
             },
           )
