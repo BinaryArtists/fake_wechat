@@ -33,8 +33,8 @@ class Home extends StatefulWidget {
   final FakeWechat wechat;
 
   Home({
-    @required this.wechat,
     Key key,
+    @required this.wechat,
   }) : super(key: key);
 
   @override
