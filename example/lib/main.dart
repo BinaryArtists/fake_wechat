@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
   }
 
   void _listenShareMsg(FakeWechatShareMsgResp resp) {
-    String content = 'auth: ${resp.errorCode} ${resp.errorMsg}';
+    String content = 'share: ${resp.errorCode} ${resp.errorMsg}';
     _showTips('分享', content);
   }
 
