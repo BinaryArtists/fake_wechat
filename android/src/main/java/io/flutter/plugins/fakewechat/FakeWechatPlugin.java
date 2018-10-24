@@ -142,7 +142,7 @@ public class FakeWechatPlugin implements MethodCallHandler, PluginRegistry.ViewD
 
   private IWXAPI iwxapi;
 
-  public FakeWechatPlugin(Registrar registrar, MethodChannel channel) {
+  FakeWechatPlugin(Registrar registrar, MethodChannel channel) {
     this.registrar = registrar;
     this.channel = channel;
     this.qrauth = DiffDevOAuthFactory.getDiffDevOAuth();
