@@ -329,18 +329,18 @@ static NSString * const ARGUMENT_KEY_RESULT_AUTHCODE = @"authCode";
 
 -(void)onResp:(BaseResp *)resp {
     NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:[NSNumber numberWithInt:resp.errCode] forKey:ARGUMENT_KEY_RESULT_ERRORCODE];
+    [dictionary setValue:[NSNumber numberWithInt:resp.errCode] forKey:ARGUMENT_KEY_RESULT_ERRORCODE];
     if (resp.errStr != nil) {
-        [dictionary setObject:resp.errStr forKey:ARGUMENT_KEY_RESULT_ERRORMSG];
+        [dictionary setValue:resp.errStr forKey:ARGUMENT_KEY_RESULT_ERRORMSG];
     }
     if ([resp isKindOfClass:[SendAuthResp class]]) {
         // 授权
         if (resp.errCode == WXSuccess) {
             SendAuthResp * authResp = (SendAuthResp *) resp;
-            [dictionary setObject:authResp.code forKey:ARGUMENT_KEY_RESULT_CODE];
-            [dictionary setObject:authResp.state forKey:ARGUMENT_KEY_RESULT_STATE];
-            [dictionary setObject:authResp.lang forKey:ARGUMENT_KEY_RESULT_LANG];
-            [dictionary setObject:authResp.country forKey:ARGUMENT_KEY_RESULT_COUNTRY];
+            [dictionary setValue:authResp.code forKey:ARGUMENT_KEY_RESULT_CODE];
+            [dictionary setValue:authResp.state forKey:ARGUMENT_KEY_RESULT_STATE];
+            [dictionary setValue:authResp.lang forKey:ARGUMENT_KEY_RESULT_LANG];
+            [dictionary setValue:authResp.country forKey:ARGUMENT_KEY_RESULT_COUNTRY];
         }
         [_channel invokeMethod:METHOD_ONAUTHRESP arguments:dictionary];
     } else if ([resp isKindOfClass:[OpenWebviewResp class]]) {
@@ -353,25 +353,25 @@ static NSString * const ARGUMENT_KEY_RESULT_AUTHCODE = @"authCode";
         // 一次性订阅消息
         if (resp.errCode == WXSuccess) {
             WXSubscribeMsgResp * subscribeMsgResp = (WXSubscribeMsgResp *) resp;
-            [dictionary setObject:subscribeMsgResp.templateId forKey:ARGUMENT_KEY_RESULT_TEMPLATEID];
-            [dictionary setObject:[NSNumber numberWithUnsignedInt:subscribeMsgResp.scene] forKey:ARGUMENT_KEY_RESULT_SCENE];
-            [dictionary setObject:subscribeMsgResp.action forKey:ARGUMENT_KEY_RESULT_ACTION];
-            [dictionary setObject:subscribeMsgResp.reserved forKey:ARGUMENT_KEY_RESULT_RESERVED];
-            [dictionary setObject:subscribeMsgResp.openId forKey:ARGUMENT_KEY_RESULT_OPENID];
+            [dictionary setValue:subscribeMsgResp.templateId forKey:ARGUMENT_KEY_RESULT_TEMPLATEID];
+            [dictionary setValue:[NSNumber numberWithUnsignedInt:subscribeMsgResp.scene] forKey:ARGUMENT_KEY_RESULT_SCENE];
+            [dictionary setValue:subscribeMsgResp.action forKey:ARGUMENT_KEY_RESULT_ACTION];
+            [dictionary setValue:subscribeMsgResp.reserved forKey:ARGUMENT_KEY_RESULT_RESERVED];
+            [dictionary setValue:subscribeMsgResp.openId forKey:ARGUMENT_KEY_RESULT_OPENID];
         }
         [_channel invokeMethod:METHOD_ONSUBSCRIBEMSGRESP arguments:dictionary];
     } else if ([resp isKindOfClass:[WXLaunchMiniProgramResp class]]) {
         // 打开小程序
         if (resp.errCode == WXSuccess) {
             WXLaunchMiniProgramResp * launchMiniProgramResp = (WXLaunchMiniProgramResp *) resp;
-            [dictionary setObject:launchMiniProgramResp.extMsg forKey:ARGUMENT_KEY_RESULT_EXTMSG];
+            [dictionary setValue:launchMiniProgramResp.extMsg forKey:ARGUMENT_KEY_RESULT_EXTMSG];
         }
         [_channel invokeMethod:METHOD_ONLAUNCHMINIPROGRAMRESP arguments:dictionary];
     } else if ([resp isKindOfClass:[PayResp class]]) {
         // 支付
         if (resp.errCode == WXSuccess) {
             PayResp * payResp = (PayResp *) resp;
-            [dictionary setObject:payResp.returnKey forKey:ARGUMENT_KEY_RESULT_RETURNKEY];
+            [dictionary setValue:payResp.returnKey forKey:ARGUMENT_KEY_RESULT_RETURNKEY];
         }
         [_channel invokeMethod:METHOD_ONPAYRESP arguments:dictionary];
     }
