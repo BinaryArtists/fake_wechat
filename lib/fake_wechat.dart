@@ -614,32 +614,24 @@ class FakeWechat {
       return request.close();
     }).then((HttpClientResponse response) async {
       if (response.statusCode == HttpStatus.ok) {
-        ContentType contentType = ContentType.parse(
-            response.headers.value(HttpHeaders.contentTypeHeader));
-        if ('json' == contentType.subType) {
-          Encoding encoding = Encoding.getByName(contentType.charset);
-          if (encoding == null) {
-            encoding = utf8;
-          }
-          String content = await encoding.decodeStream(response);
-          Map<dynamic, dynamic> map = json.decode(content);
-          int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
-              ? map[FakeWechatApiResp.KEY_ERRORCODE]
-              : FakeWechatApiResp.SUCCESS;
-          String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
-          if (errorCode == FakeWechatApiResp.SUCCESS) {
-            return new FakeWechatAccessToken._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-              accessToken: map[FakeWechatApiResp.KEY_ACCESS_TOKEN],
-              expiresIn: map[FakeWechatApiResp.KEY_EXPIRES_IN],
-            );
-          } else {
-            return new FakeWechatAccessToken._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-            );
-          }
+        String content = await utf8.decodeStream(response);
+        Map<dynamic, dynamic> map = json.decode(content);
+        int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
+            ? map[FakeWechatApiResp.KEY_ERRORCODE]
+            : FakeWechatApiResp.SUCCESS;
+        String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
+        if (errorCode == FakeWechatApiResp.SUCCESS) {
+          return new FakeWechatAccessToken._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+            accessToken: map[FakeWechatApiResp.KEY_ACCESS_TOKEN],
+            expiresIn: map[FakeWechatApiResp.KEY_EXPIRES_IN],
+          );
+        } else {
+          return new FakeWechatAccessToken._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+          );
         }
       }
       throw new HttpException(
@@ -658,32 +650,24 @@ class FakeWechat {
       return request.close();
     }).then((HttpClientResponse response) async {
       if (response.statusCode == HttpStatus.ok) {
-        ContentType contentType = ContentType.parse(
-            response.headers.value(HttpHeaders.contentTypeHeader));
-        if ('json' == contentType.subType) {
-          Encoding encoding = Encoding.getByName(contentType.charset);
-          if (encoding == null) {
-            encoding = utf8;
-          }
-          String content = await encoding.decodeStream(response);
-          Map<dynamic, dynamic> map = json.decode(content);
-          int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
-              ? map[FakeWechatApiResp.KEY_ERRORCODE]
-              : FakeWechatApiResp.SUCCESS;
-          String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
-          if (errorCode == FakeWechatApiResp.SUCCESS) {
-            return new FakeWechatTicket._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-              ticket: map[FakeWechatTicket.KEY_TICKET],
-              expiresIn: map[FakeWechatApiResp.KEY_EXPIRES_IN],
-            );
-          } else {
-            return new FakeWechatTicket._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-            );
-          }
+        String content = await utf8.decodeStream(response);
+        Map<dynamic, dynamic> map = json.decode(content);
+        int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
+            ? map[FakeWechatApiResp.KEY_ERRORCODE]
+            : FakeWechatApiResp.SUCCESS;
+        String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
+        if (errorCode == FakeWechatApiResp.SUCCESS) {
+          return new FakeWechatTicket._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+            ticket: map[FakeWechatTicket.KEY_TICKET],
+            expiresIn: map[FakeWechatApiResp.KEY_EXPIRES_IN],
+          );
+        } else {
+          return new FakeWechatTicket._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+          );
         }
       }
       throw new HttpException(
@@ -735,35 +719,27 @@ class FakeWechat {
       return request.close();
     }).then((HttpClientResponse response) async {
       if (response.statusCode == HttpStatus.ok) {
-        ContentType contentType = ContentType.parse(
-            response.headers.value(HttpHeaders.contentTypeHeader));
-        if ('json' == contentType.subType) {
-          Encoding encoding = Encoding.getByName(contentType.charset);
-          if (encoding == null) {
-            encoding = utf8;
-          }
-          String content = await encoding.decodeStream(response);
-          Map<dynamic, dynamic> map = json.decode(content);
-          int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
-              ? map[FakeWechatApiResp.KEY_ERRORCODE]
-              : FakeWechatApiResp.SUCCESS;
-          String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
-          if (errorCode == FakeWechatApiResp.SUCCESS) {
-            return new FakeWechatUnionIDAccessToken._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-              openId: map[FakeWechatApiResp.KEY_OPENID],
-              scope: map[FakeWechatApiResp.KEY_SCOPE],
-              accessToken: map[FakeWechatApiResp.KEY_ACCESS_TOKEN],
-              refreshToken: map[FakeWechatApiResp.KEY_REFRESH_TOKEN],
-              expiresIn: map[FakeWechatApiResp.KEY_EXPIRES_IN],
-            );
-          } else {
-            return new FakeWechatUnionIDAccessToken._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-            );
-          }
+        String content = await utf8.decodeStream(response);
+        Map<dynamic, dynamic> map = json.decode(content);
+        int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
+            ? map[FakeWechatApiResp.KEY_ERRORCODE]
+            : FakeWechatApiResp.SUCCESS;
+        String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
+        if (errorCode == FakeWechatApiResp.SUCCESS) {
+          return new FakeWechatUnionIDAccessToken._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+            openId: map[FakeWechatApiResp.KEY_OPENID],
+            scope: map[FakeWechatApiResp.KEY_SCOPE],
+            accessToken: map[FakeWechatApiResp.KEY_ACCESS_TOKEN],
+            refreshToken: map[FakeWechatApiResp.KEY_REFRESH_TOKEN],
+            expiresIn: map[FakeWechatApiResp.KEY_EXPIRES_IN],
+          );
+        } else {
+          return new FakeWechatUnionIDAccessToken._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+          );
         }
       }
       throw new HttpException(
@@ -785,39 +761,31 @@ class FakeWechat {
       return request.close();
     }).then((HttpClientResponse response) async {
       if (response.statusCode == HttpStatus.ok) {
-        ContentType contentType = ContentType.parse(
-            response.headers.value(HttpHeaders.contentTypeHeader));
-        if ('json' == contentType.subType) {
-          Encoding encoding = Encoding.getByName(contentType.charset);
-          if (encoding == null) {
-            encoding = utf8;
-          }
-          String content = await encoding.decodeStream(response);
-          Map<dynamic, dynamic> map = json.decode(content);
-          int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
-              ? map[FakeWechatApiResp.KEY_ERRORCODE]
-              : FakeWechatApiResp.SUCCESS;
-          String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
-          if (errorCode == FakeWechatApiResp.SUCCESS) {
-            return new FakeWechatUnionIDUserInfo._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-              openId: map[FakeWechatApiResp.KEY_OPENID],
-              nickName: map[FakeWechatApiResp.KEY_NICKNAME],
-              sex: map[FakeWechatApiResp.KEY_SEX],
-              province: map[FakeWechatApiResp.KEY_PROVINCE],
-              city: map[FakeWechatApiResp.KEY_CITY],
-              country: map[FakeWechatApiResp.KEY_COUNTRY],
-              headImgUrl: map[FakeWechatApiResp.KEY_HEADIMGURL],
-              privilege: map[FakeWechatApiResp.KEY_PRIVILEGE],
-              unionId: map[FakeWechatApiResp.KEY_UNIONID],
-            );
-          } else {
-            return new FakeWechatUnionIDUserInfo._internal(
-              errorCode: errorCode,
-              errorMsg: errorMsg,
-            );
-          }
+        String content = await utf8.decodeStream(response);
+        Map<dynamic, dynamic> map = json.decode(content);
+        int errorCode = map.containsKey(FakeWechatApiResp.KEY_ERRORCODE)
+            ? map[FakeWechatApiResp.KEY_ERRORCODE]
+            : FakeWechatApiResp.SUCCESS;
+        String errorMsg = map[FakeWechatApiResp.KEY_ERRORMSG];
+        if (errorCode == FakeWechatApiResp.SUCCESS) {
+          return new FakeWechatUnionIDUserInfo._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+            openId: map[FakeWechatApiResp.KEY_OPENID],
+            nickName: map[FakeWechatApiResp.KEY_NICKNAME],
+            sex: map[FakeWechatApiResp.KEY_SEX],
+            province: map[FakeWechatApiResp.KEY_PROVINCE],
+            city: map[FakeWechatApiResp.KEY_CITY],
+            country: map[FakeWechatApiResp.KEY_COUNTRY],
+            headImgUrl: map[FakeWechatApiResp.KEY_HEADIMGURL],
+            privilege: map[FakeWechatApiResp.KEY_PRIVILEGE],
+            unionId: map[FakeWechatApiResp.KEY_UNIONID],
+          );
+        } else {
+          return new FakeWechatUnionIDUserInfo._internal(
+            errorCode: errorCode,
+            errorMsg: errorMsg,
+          );
         }
       }
       throw new HttpException(
