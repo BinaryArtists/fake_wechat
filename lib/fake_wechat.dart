@@ -296,7 +296,7 @@ class FakeWechatUnionIDUserInfo extends FakeWechatApiResp {
   final String city;
   final String country;
   final String headImgUrl;
-  final List<String> privilege;
+  final List<dynamic> privilege;
   final String unionId;
 
   FakeWechatUnionIDUserInfo._internal({
